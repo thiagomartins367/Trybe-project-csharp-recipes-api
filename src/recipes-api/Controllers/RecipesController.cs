@@ -49,9 +49,12 @@ public class RecipesController : ControllerBase
 
     // 4 - Sua aplicação deve ter o endpoint PUT /recipe
     [HttpPut("{name}")]
-    public IActionResult Update(string name, [FromBody]Recipe recipe)
+    public IActionResult Update(string name, [FromBody] Recipe recipe)
     {
-        throw new NotImplementedException();
+        if (name.ToLower() != recipe.Name.ToLower()) return BadRequest();
+        if (!_service.RecipeExists(name)) return NotFound();
+        _service.UpdateRecipe(recipe);
+        return NoContent();
     }
 
     // 5 - Sua aplicação deve ter o endpoint DEL /recipe
