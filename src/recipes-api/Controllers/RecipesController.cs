@@ -57,10 +57,12 @@ public class RecipesController : ControllerBase
         return NoContent();
     }
 
-    // 5 - Sua aplicação deve ter o endpoint DEL /recipe
+    // 5 - Sua aplicação deve ter o endpoint DELETE /recipe
     [HttpDelete("{name}")]
     public IActionResult Delete(string name)
     {
-        throw new NotImplementedException();
-    }    
+        if (!_service.RecipeExists(name)) return NotFound();
+        _service.DeleteRecipe(name);
+        return NoContent();
+    }
 }
