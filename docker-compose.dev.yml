@@ -1,0 +1,53 @@
+version: "3.8"
+services:
+  dev_recipes-api:
+    container_name: dev_recipes-api
+    image: dev_recipes-api
+    build:
+      context: ./src/recipes-api
+      dockerfile: Dockerfile.dev
+      target: development
+    working_dir: /usr/src/dev_recipes-api
+    restart: always
+    ports:
+      - 5057:5057
+    volumes:
+      - ./src/recipes-api:/usr/src/dev_recipes-api
+      - /usr/src/dev_recipes-api/bin
+      - /usr/src/dev_recipes-api/obj
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - USE_HTTPS_REDIRECTION=false
+    networks:
+      - dev_network-recipes-api
+
+  evaluator-test_recipes-api:
+    container_name: evaluator-test_recipes-api
+    image: evaluator-test_recipes-api
+    build:
+      context: ./src
+      dockerfile: Dockerfile.evaluator-test
+      target: evaluator-test
+    working_dir: /usr/src/evaluator-test_recipes-api
+    restart: always
+    volumes:
+      - ./src/recipes-api.Test.Test:/usr/src/evaluator-test_recipes-api/recipes-api.Test.Test
+      - ./src/recipes-api:/usr/src/evaluator-test_recipes-api/recipes-api
+      - /usr/src/evaluator-test_recipes-api/recipes-api.Test.Test/bin
+      - /usr/src/evaluator-test_recipes-api/recipes-api.Test.Test/obj
+      - /usr/src/evaluator-test_recipes-api/recipes-api/bin
+      - /usr/src/evaluator-test_recipes-api/recipes-api/obj
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      - USE_HTTPS_REDIRECTION=false
+    networks:
+      - evaluator-test_network-recipes-api
+
+networks:
+  dev_network-recipes-api:
+    name: dev_network-recipes-api
+    external: false
+
+  evaluator-test_network-recipes-api:
+    name: evaluator-test_network-recipes-api
+    external: false
