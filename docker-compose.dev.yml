@@ -17,6 +17,7 @@ services:
       - /usr/src/dev_recipes-api/obj
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
+      - SOFTWARE_LICENSE_URL=http://localhost:5057
       - USE_HTTPS_REDIRECTION=false
     networks:
       - dev_network-recipes-api
