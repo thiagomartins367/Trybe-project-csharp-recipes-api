@@ -1,0 +1,5 @@
+recipes-api/bin
+recipes-api/obj
+recipes-api.Test.Test/bin
+recipes-api.Test.Test/obj
+recipes-api/compiler-diagnostics.sarif
