@@ -11,7 +11,7 @@ Tem por objetivo a avaliação e prática dos conhecimentos adquiridos durante a
 ## Uso no Docker 🐋
 Se você possuir o [Docker](https://www.docker.com) e o [Docker compose](https://docs.docker.com/compose/install) instalados, você pode economizar muito trabalho na configuração do ambiente de produção.
 
-⚠️ No ambiente Docker de produção a API não utiliza redirecionamento HTTPS por padrão a fim de diminuir a complexidade na inicialização local, já que seria nescessário configurar uma hosdagem no docker utilizando o HTTPS. Para saber como configurar essa hospedagem acesse a [Documentação Oficial](https://learn.microsoft.com/pt-br/aspnet/core/security/docker-compose-https?view=aspnetcore-6.0) do ASP.NET.
+⚠️ No ambiente Docker de produção a API não utiliza redirecionamento HTTPS por padrão a fim de diminuir a complexidade na inicialização local, já que seria nescessário configurar uma hosdagem no docker utilizando o HTTPS. Para saber como configurar essa hospedagem acesse a [Documentação Oficial](https://learn.microsoft.com/pt-br/aspnet/core/security/docker-compose-https?view=aspnetcore-6.0) do *ASP.NET*.
 
 Para iniciar a API no ambiente Docker, basta executar 1 comando:
 ```
