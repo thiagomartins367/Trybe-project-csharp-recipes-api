@@ -11,6 +11,7 @@ namespace recipes_api.Controllers;
 
 [ApiController]
 [Route("user")]
+[Produces("application/json")]
 public class UserController : ControllerBase
 {
     public readonly IUserService _service;
@@ -21,6 +22,9 @@ public class UserController : ControllerBase
     }
 
     // 6 - Sua aplicação deve ter o endpoint GET /user/:email
+    /// <response code="200" cref="User">Success</response>
+    /// <response code="404" >Not Found</response>
+    [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
     [HttpGet("{email}", Name = "GetUser")]
     public IActionResult Get(string email)
     {
