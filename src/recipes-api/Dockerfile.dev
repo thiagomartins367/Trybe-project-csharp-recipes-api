@@ -1,0 +1,11 @@
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS development
+
+WORKDIR /usr/src/dev_recipes-api
+
+EXPOSE 5057
+
+COPY . ./
+
+RUN dotnet restore
+
+ENTRYPOINT dotnet watch run --project ./recipes-api.csproj --urls "http://*:5057"
