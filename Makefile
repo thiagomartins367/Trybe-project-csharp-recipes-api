@@ -11,6 +11,18 @@ compose_rm_images_dev: # Ex: make compose_rm_images_dev
 	docker image rm dev_recipes-api evaluator-test_recipes-api
 
 # ─────────────────────────────────────────────────────
+# Scripts para o ambiente Docker de produção
+
+compose_up_prod: # Ex: make compose_up_prod
+	docker-compose -f docker-compose.prod.yml up -d
+
+compose_down_prod: # Ex: make compose_down_prod
+	docker-compose -f docker-compose.prod.yml down --remove-orphans
+
+compose_rm_images_prod: # Ex: make compose_rm_images_prod
+	docker image rm recipes-api
+
+# ─────────────────────────────────────────────────────
 
 start: # Ex: make start
 	dotnet run --project ./src/recipes-api/recipes-api.csproj
