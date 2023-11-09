@@ -57,7 +57,7 @@ Para adicionar as alterações da nova branch de desenvolvimento na branch princ
 
 Alterações diretas na branch ```main``` estão bloqueadas.
 
-⚠️ NOTA: O uso dos comandos `make` listados no arquivo `Makefile` é recomendado para acelerar o processo de criação e remoção dos containers dev ou na execução de scripts `dotnet` no caso de não usar o docker como ambiente de desenvolvimento.
+⚠️ NOTA: O uso dos comandos `make` listados no arquivo `Makefile` é recomendado para acelerar o processo de criação e remoção dos containers dev e/ou produção ou na execução de scripts `dotnet` no caso de não usar o docker como ambiente de desenvolvimento.
 
 ## Contribuidores 🤝
 
