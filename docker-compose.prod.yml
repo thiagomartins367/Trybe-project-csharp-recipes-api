@@ -1,0 +1,27 @@
+version: "3.8"
+services:
+  recipes-api:
+    container_name: recipes-api
+    image: recipes-api
+    build:
+      context: ./src/recipes-api
+      dockerfile: Dockerfile.prod
+    working_dir: /usr/src/recipes-api
+    restart: always
+    ports:
+      - 80:80
+    # Para saber como hospedar imagens ASP.NET
+    # com o Docker Compose em HTTPS visite:
+    # https://learn.microsoft.com/pt-br/aspnet/core/security/docker-compose-https?view=aspnetcore-6.0
+    #
+    # É nescessário alterar o valor da variável de ambiente "USE_HTTPS_REDIRECTION"
+    # para "true" para que o HTTPS funcione
+    environment:
+      - USE_HTTPS_REDIRECTION=false
+    networks:
+      - network-recipes-api
+
+networks:
+  network-recipes-api:
+    name: network-recipes-api
+    external: false

@@ -1,0 +1,17 @@
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS build
+
+WORKDIR /usr/src/build_recipes-api
+
+COPY . ./
+
+RUN dotnet restore
+
+RUN dotnet publish -c Release -o out
+
+FROM mcr.microsoft.com/dotnet/aspnet:6.0 AS production
+
+WORKDIR /usr/src/recipes-api
+
+COPY --from=build /usr/src/build_recipes-api/out .
+
+ENTRYPOINT ["dotnet", "recipes-api.dll"]

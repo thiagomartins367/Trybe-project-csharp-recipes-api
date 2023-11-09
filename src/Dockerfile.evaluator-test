@@ -1,0 +1,9 @@
+FROM mcr.microsoft.com/dotnet/sdk:6.0 AS evaluator-test
+
+WORKDIR /usr/src/evaluator-test_recipes-api
+
+COPY . ./
+
+RUN dotnet restore
+
+ENTRYPOINT while true; do dotnet test; sleep 5; done;
