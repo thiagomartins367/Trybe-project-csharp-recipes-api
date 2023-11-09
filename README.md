@@ -8,6 +8,19 @@ Desenvolvido durante o período de **Aceleração C#** da Trybe 🚀
 
 Tem por objetivo a avaliação e prática dos conhecimentos adquiridos durante a aceleração, visando o cumprimento do requisitos solicitados!
 
+## Uso no Docker 🐋
+Se você possuir o [Docker](https://www.docker.com) e o [Docker compose](https://docs.docker.com/compose/install) instalados, você pode economizar muito trabalho na configuração do ambiente de produção.
+
+⚠️ No ambiente Docker de produção a API não utiliza redirecionamento HTTPS por padrão a fim de diminuir a complexidade na inicialização local, já que seria nescessário configurar uma hosdagem no docker utilizando o HTTPS. Para saber como configurar essa hospedagem acesse a [Documentação Oficial](https://learn.microsoft.com/pt-br/aspnet/core/security/docker-compose-https?view=aspnetcore-6.0) do ASP.NET.
+
+Para iniciar a API no ambiente Docker, basta executar 1 comando:
+```
+docker-compose -f docker-compose.prod.yml up -d
+```
+Assim que os containers estiverem funcionando, a API poderá ser acessada no `http://localhost`
+
+Faça um teste acessando a rota `http://localhost/recipe` em seu navegador.
+
 ## Instalação e Uso 🖥️
 ⚠️ É necessário ter instalado o [.NET Framework](https://dotnet.microsoft.com/pt-br) (Windows) ou [.NET Core](https://dotnet.microsoft.com/pt-br/) (Linux/ Mac) em sua máquina para executar o sistema.
 
@@ -38,7 +51,7 @@ git checkout -b nome-da-branch
 ```
 docker-compose -f docker-compose.dev.yml up -d
 ```
-Após esse processo a API estará funcionando em seu `http://localhost:5057` e pronta para o desenvolvimento.
+Após esse processo a API estará disponível em seu `http://localhost:5057` e pronta para o desenvolvimento.
 
 Para adicionar as alterações da nova branch de desenvolvimento na branch principal ```main``` é nescessário criar um *Pull Request* neste repositório.
 
