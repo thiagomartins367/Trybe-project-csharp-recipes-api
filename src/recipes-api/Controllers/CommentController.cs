@@ -11,6 +11,7 @@ namespace recipes_api.Controllers;
 
 [ApiController]
 [Route("comment")]
+[Produces("application/json")]
 public class CommentController : ControllerBase
 {
     public readonly ICommentService _service;
@@ -21,6 +22,21 @@ public class CommentController : ControllerBase
     }
 
     // 10 - Sua aplicação deve ter o endpoint POST /comment
+    /// <summary>
+    ///     Cria um comentário de uma receita.
+    /// </summary>
+    /// <remarks>
+    /// Request body example:
+    ///
+    ///     {
+    ///        "email": "pessoa@email.com",
+    ///        "recipeName": "Coxinha",
+    ///        "CommentText": "Fiz a receita de Coxinha na minha casa. Fiz o passo a passo e funcionou."
+    ///     }
+    ///
+    /// </remarks>
+    /// <response code="201">Created</response>
+    [ProducesResponseType(typeof(Comment), StatusCodes.Status201Created)]
     [HttpPost]
     public IActionResult Create([FromBody] Comment comment)
     {
@@ -29,6 +45,11 @@ public class CommentController : ControllerBase
     }
 
     // 11 - Sua aplicação deve ter o endpoint GET /comment/:recipeName
+    /// <summary>
+    ///     Retorna uma comentário pelo nome da receita.
+    /// </summary>
+    /// <response code="200">Success</response>
+    [ProducesResponseType(typeof(Comment), StatusCodes.Status200OK)]
     [HttpGet("{name}", Name = "GetComment")]
     public IActionResult Get(string name)
     {

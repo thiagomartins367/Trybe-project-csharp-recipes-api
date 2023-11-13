@@ -22,9 +22,13 @@ public class UserController : ControllerBase
     }
 
     // 6 - Sua aplicação deve ter o endpoint GET /user/:email
+    /// <summary>
+    ///     Retorna usuário pelo parâmetro email.
+    /// </summary>
     /// <response code="200" cref="User">Success</response>
-    /// <response code="404" >Not Found</response>
+    /// <response code="404">Not Found</response>
     [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     [HttpGet("{email}", Name = "GetUser")]
     public IActionResult Get(string email)
     {
@@ -34,6 +38,21 @@ public class UserController : ControllerBase
     }
 
     // 7 - Sua aplicação deve ter o endpoint POST /user
+    /// <summary>
+    ///     Cria um usuário na base de dados.
+    /// </summary>
+    /// <remarks>
+    /// Request body example:
+    ///
+    ///     {
+    ///        "email": "pessoa@email.com",
+    ///        "name": "Pessoa Nova",
+    ///        "password": "senhaDaPessoaNova"
+    ///     }
+    ///
+    /// </remarks>
+    /// <response code="201">Created</response>
+    [ProducesResponseType(typeof(User), StatusCodes.Status201Created)]
     [HttpPost]
     public IActionResult Create([FromBody] User user)
     {
@@ -42,6 +61,25 @@ public class UserController : ControllerBase
     }
 
     // "8 - Sua aplicação deve ter o endpoint PUT /user
+    /// <summary>
+    ///     Atualiza dados de um usuário pelo parâmetro email.
+    /// </summary>
+    /// <remarks>
+    /// Request body example:
+    ///
+    ///     {
+    ///        "email": "pessoa@email.com",
+    ///        "name": "Pessoa",
+    ///        "password": "senhaDaPessoa"
+    ///     }
+    ///
+    /// </remarks>
+    /// <response code="200">Success</response>
+    /// <response code="400">Bad Request</response>
+    /// <response code="404">Not Found</response>
+    [ProducesResponseType(typeof(User), StatusCodes.Status200OK)]
+    [ProducesResponseType(StatusCodes.Status400BadRequest)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     [HttpPut("{email}")]
     public IActionResult Update(string email, [FromBody] User user)
     {
@@ -52,6 +90,13 @@ public class UserController : ControllerBase
     }
 
     // 9 - Sua aplicação deve ter o endpoint DELETE /user
+    /// <summary>
+    ///     Remove um usuário da base de dados pelo parâmetro email.
+    /// </summary>
+    /// <response code="204">No Content</response>
+    /// <response code="404">Not Found</response>
+    [ProducesResponseType(StatusCodes.Status204NoContent)]
+    [ProducesResponseType(StatusCodes.Status404NotFound)]
     [HttpDelete("{email}")]
     public IActionResult Delete(string email)
     {

@@ -8,7 +8,6 @@ namespace recipes_api.Controllers;
 [ApiExplorerSettings(IgnoreApi = true)]
 public class LicenseController : ControllerBase
 {
-
     [HttpGet("mit")]
     public IActionResult Get()
     {
