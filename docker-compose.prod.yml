@@ -17,6 +17,7 @@ services:
     # É nescessário alterar o valor da variável de ambiente "USE_HTTPS_REDIRECTION"
     # para "true" para que o HTTPS funcione
     environment:
+      - SOFTWARE_LICENSE_URL=http://localhost:80/license/mit
       - USE_HTTPS_REDIRECTION=false
     networks:
       - network-recipes-api
